@@ -1,17 +1,22 @@
-# Mit diesem Script können JPEG-Dateien,die in einem Verzeichnis gespeichert sind, zu einer m-mal-n-Schachbrett-Collage zusammengesetzt werden.
+# Mit diesem Script können JPEG-Dateien, die in einem Verzeichnis gespeichert sind, zu einer m-mal-n-Schachbrett-Collage zusammengesetzt werden.
 # Z.B. alle 12 Bilder für die Übersichtsseite eines Jahreskalenders.
-# Die Collage wir auch als JPEG-Datei gespeichert. Achtung! Sehr große Dateien, z.B. 13MB können mit Microsoft Paint nicht geöffnet werden.
+# Die Collage wird auch als JPEG-Datei gespeichert. Achtung! Sehr große Dateien, z.B. 13MB können mit Microsoft Paint nicht geöffnet werden.
 
 # Der erste Ansatz war, für die Collage eine feste Größe vorzugeben und das Seitenverhältnis der Bild-Kacheln daran anzupassen.
-# Das führt aber nur selten zu ausgewogenen Collagen.
+# Das führt aber nur selten bzw. nur mit bearbeiteten Bildern zu ausgewogenen Collagen.
 
 # Deshalb wurde in der zweiten Version die Einstellung CTileShape eingeführt, um das Seitenverhältnis der Bildkacheln fest vorzugeben.
 # LikeMajority entspricht dem ersten Ansatz mit dem berechnenten Seitenverhältnis. 
 # Die anderen drei Werte definieren fest vorgegebene Seitenverhältnisse. Bei diesen drei Werten kann nur noch die für die Collage vorgegebene Breite 
 # ODER die Höhe berücksichtigt werden und es wird immer mit CFillMode.Loss gerechnet.
 
+# Der Bildvorrat für die Collage kann auf die ersten n Bilder eingeschränkt werden (siehe slice).
+# Durch die Behandlung des Vorrats mit random.shuffle ergibt jeder Lauf eine andere Auswahl in einer neuen Reihenfolge.
+
 # Die Größe der Collage in Pixel ergibt sich aus den vorgegebenen Maßen in Zentimetern und der Auflösung in dpi (ppi)
 # Für den Stoffdruck sind laut eicie.com 120 dpi optimal.
+
+# Collagen für CeWe-A2-quer-Kalender erfordern 52x40cm.
 
 # Das Script erfordert das Pillow-Paket, gefunden über https://pypi.org/project/pillow/ 
 # pip install pillow
@@ -400,15 +405,18 @@ def Collage( sCollageFolder, sFolder, sSubFolder, eSort, dpiRes, nWidthCm, nHeig
 
 ### Collage zusammenstellen ##########################################################################
 
-#$$ offen: leere Kacheln im m x n Schachbrett auffüllen:
+#$$ offen: 
+#leere Kacheln im m x n Schachbrett auffüllen:
   # v1 für je 3 leere Kacheln die Größe eines Bildes vervierfachen
   # v2 für jede leere Kachel ein Bild doppeln
+# Einlesen vom Rest trennen und nur den Rest in einer for-Schleife verarbeiten
+
 
 # Verzeichnis, in dem die Bilddateien zu finden sind:
 sFolder = 'E:\\Fotos\\2024'
 
 # Verzeichnis, in dem die fertige Collage gespechert werden soll:
-sCollageFolder = 'E:\\Fotos\\2024\\00_Collagen'
+sCollageFolder = 'E:\\Fotos\\000Auswahl\\00_Collagen'
 
 # Alternativ zur Erstellung einer Image-Instanz mit Image.new könnte auch eine leere Vorlage geöffnet werden.
 # sVorlage definiert die Vorlage:
@@ -481,7 +489,28 @@ pixSpace = 30
 #            dpiRes=300, nWidthCm=60, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=24)
 
 # CeWe-A2-Kalender-Quer braucht 52x40cm und 25 Kacheln
-for i in range (1,20,1):
-  print(f'Collage{i}')
-  Collage( sCollageFolder, sFolder, '00_Wandbild_Collage_Blumen_2005-2012', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
-         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=25)
+#for i in range (1,20,1):
+#  print(f'Collage{i}')
+#  Collage( sCollageFolder, sFolder, '00_Wandbild_Collage_Blumen_2005-2012', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=25)
+
+# for i in range (1,20,1):
+#   print(f'Collage{i}')
+#   Collage( sCollageFolder, sFolder, '00_Kalender_Wegweiser', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#          dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=24)
+
+#Collage( sCollageFolder, 'E:\\Fotos\\000Auswahl', '00_Auswahl_Lustiges', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=60)
+
+#Collage( sCollageFolder, 'E:\\Fotos\\000Auswahl', '00_Auswahl_Tische und Stühle', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=16)
+
+#Collage( sCollageFolder, 'E:\\Fotos\\000Auswahl', '00_Auswahl_Treppen', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=12)
+
+#Collage( sCollageFolder, 'E:\\Fotos\\000Kalender\\2024', '00_KalenderMünchen', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=12)
+
+Collage( sCollageFolder, 'E:\\Fotos\\000Kalender\\2024', '00_KalenderWildenbruch', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=30)
+
