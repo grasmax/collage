@@ -511,6 +511,18 @@ pixSpace = 30
 #Collage( sCollageFolder, 'E:\\Fotos\\000Kalender\\2024', '00_KalenderMünchen', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
 #         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=12)
 
-Collage( sCollageFolder, 'E:\\Fotos\\000Kalender\\2024', '00_KalenderWildenbruch', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
-         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=30)
+#Collage( sCollageFolder, 'E:\\Fotos\\000Kalender\\2024', '00_KalenderWildenbruch', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=30)
 
+# for i in range (1,20,1):
+#    print(f'Collage{i}')
+#    Collage( sCollageFolder, 'E:\\Fotos\\000Auswahl', '00_Auswahl_Blumen_2013-2020', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#          dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=25)
+
+# for i in range (1,10,1):
+#    print(f'Collage{i}')
+#    Collage( sCollageFolder, 'E:\\Fotos\\000Auswahl', '00_Auswahl_Wegweiser', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#          dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=24)
+
+Collage( sCollageFolder, 'E:\\Fotos\\000Kalender\\2024', '00_Kalender_DD', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=12)
