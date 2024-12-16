@@ -524,5 +524,5 @@ pixSpace = 30
 #    Collage( sCollageFolder, 'E:\\Fotos\\000Auswahl', '00_Auswahl_Wegweiser', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
 #          dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=24)
 
-Collage( sCollageFolder, 'E:\\Fotos\\000Kalender\\2024', '00_Kalender_DD', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
-         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=12)
+#Collage( sCollageFolder, 'E:\\Fotos\\000Kalender\\2024', '00_Kalender_DD', eSort=enumSort.Random, eTileShape=enumTileShape.LikeMajority,\
+#         dpiRes=300, nWidthCm=52, nHeightCm=40, eFillMode=enumFill.Loss, pixSpace=10, anzTopOnly=12)
